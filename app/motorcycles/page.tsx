@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
-import { Filter, ChevronDown } from "lucide-react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { Filter, ChevronDown } from "lucide-react";
 
 // Sample motorcycle data
 const motorcycles = [
@@ -14,7 +14,8 @@ const motorcycles = [
     brand: "Honda",
     category: "Adventure",
     price: 25,
-    image: "/placeholder.svg?height=300&width=400",
+    image:
+      "https://www.thaihonda.co.th/honda/uploads/cache/685/photos/shares/NewADV160-2022/2023/ADV160-Blue-W685xH426.png",
     rating: 4.5,
     reviews: 28,
   },
@@ -24,7 +25,8 @@ const motorcycles = [
     brand: "Honda",
     category: "Adventure",
     price: 25,
-    image: "/placeholder.svg?height=300&width=400",
+    image:
+      "https://www.thaihonda.co.th/honda/uploads/cache/685/photos/shares/ADV160_2024/Car_Color_-_Car_Color_image_Green.png",
     rating: 4.3,
     reviews: 19,
   },
@@ -34,7 +36,8 @@ const motorcycles = [
     brand: "Honda",
     category: "Scooter",
     price: 22,
-    image: "/placeholder.svg?height=300&width=400",
+    image:
+      "https://www.thaihonda.co.th/honda/uploads/cache/685/photos/shares/24_PCX160/Color/Color_Chart_W685xH426_PX_Grey.jpg",
     rating: 4.7,
     reviews: 42,
   },
@@ -44,7 +47,8 @@ const motorcycles = [
     brand: "Yamaha",
     category: "Scooter",
     price: 22,
-    image: "/placeholder.svg?height=300&width=400",
+    image:
+      "https://storagetym.blob.core.windows.net/www2021/images/product-2021/commuter/model-year-2023/nmax-connected-2023/lineup-360-prestige-grey/2.png?sfvrsn=d4a7d019_2",
     rating: 4.6,
     reviews: 35,
   },
@@ -54,7 +58,8 @@ const motorcycles = [
     brand: "Kawasaki",
     category: "Sport",
     price: 35,
-    image: "/placeholder.svg?height=300&width=400",
+    image:
+      "https://www.kawasaki.co.th/uploads/products/ninja400/ninja400-gy2-02.jpg",
     rating: 4.8,
     reviews: 31,
   },
@@ -64,61 +69,69 @@ const motorcycles = [
     brand: "Yamaha",
     category: "Naked",
     price: 30,
-    image: "/placeholder.svg?height=300&width=400",
+    image:
+      "https://storagetym.blob.core.windows.net/www2021/images/product-2021/commuter/model-year-2022/mt-03-2022/lineup-360-black/0.png?sfvrsn=6305e057_4",
     rating: 4.4,
     reviews: 23,
   },
-]
+];
 
 export default function MotorcyclesPage() {
   const [filters, setFilters] = useState({
     brand: "",
     category: "",
     priceRange: "",
-  })
+  });
 
-  const [showFilters, setShowFilters] = useState(false)
+  const [showFilters, setShowFilters] = useState(false);
 
   const handleFilterChange = (filterType: string, value: string) => {
     setFilters({
       ...filters,
       [filterType]: value,
-    })
-  }
+    });
+  };
 
   const filteredMotorcycles = motorcycles.filter((motorcycle) => {
-    let matches = true
+    let matches = true;
 
     if (filters.brand && motorcycle.brand !== filters.brand) {
-      matches = false
+      matches = false;
     }
 
     if (filters.category && motorcycle.category !== filters.category) {
-      matches = false
+      matches = false;
     }
 
     if (filters.priceRange) {
-      const [min, max] = filters.priceRange.split("-").map(Number)
+      const [min, max] = filters.priceRange.split("-").map(Number);
       if (motorcycle.price < min || motorcycle.price > max) {
-        matches = false
+        matches = false;
       }
     }
 
-    return matches
-  })
+    return matches;
+  });
 
-  const brands = Array.from(new Set(motorcycles.map((m) => m.brand)))
-  const categories = Array.from(new Set(motorcycles.map((m) => m.category)))
+  const brands = Array.from(new Set(motorcycles.map((m) => m.brand)));
+  const categories = Array.from(new Set(motorcycles.map((m) => m.category)));
 
   return (
     <>
       {/* Header */}
       <section className="bg-blue-600 py-16 text-white">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">Explore Our Motorcycles</h1>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+              Explore Our Motorcycles
+            </h1>
             <p className="text-center max-w-2xl mx-auto">
-              Choose the motorcycle that suits your dream trip and start enjoying the beauty of nature.
+              Choose the motorcycle that suits your dream trip and start
+              enjoying the beauty of nature.
             </p>
           </motion.div>
         </div>
@@ -136,7 +149,10 @@ export default function MotorcyclesPage() {
                 <Filter size={18} className="mr-2" />
                 Filters
               </span>
-              <ChevronDown size={18} className={`transition-transform ${showFilters ? "rotate-180" : ""}`} />
+              <ChevronDown
+                size={18}
+                className={`transition-transform ${showFilters ? "rotate-180" : ""}`}
+              />
             </button>
           </div>
 
@@ -204,10 +220,14 @@ export default function MotorcyclesPage() {
                           id={`category-${category}`}
                           name="category"
                           checked={filters.category === category}
-                          onChange={() => handleFilterChange("category", category)}
+                          onChange={() =>
+                            handleFilterChange("category", category)
+                          }
                           className="mr-2"
                         />
-                        <label htmlFor={`category-${category}`}>{category}</label>
+                        <label htmlFor={`category-${category}`}>
+                          {category}
+                        </label>
                       </div>
                     ))}
                   </div>
@@ -234,7 +254,9 @@ export default function MotorcyclesPage() {
                         id="price-20-25"
                         name="price"
                         checked={filters.priceRange === "20-25"}
-                        onChange={() => handleFilterChange("priceRange", "20-25")}
+                        onChange={() =>
+                          handleFilterChange("priceRange", "20-25")
+                        }
                         className="mr-2"
                       />
                       <label htmlFor="price-20-25">$20 - $25</label>
@@ -245,7 +267,9 @@ export default function MotorcyclesPage() {
                         id="price-25-30"
                         name="price"
                         checked={filters.priceRange === "25-30"}
-                        onChange={() => handleFilterChange("priceRange", "25-30")}
+                        onChange={() =>
+                          handleFilterChange("priceRange", "25-30")
+                        }
                         className="mr-2"
                       />
                       <label htmlFor="price-25-30">$25 - $30</label>
@@ -256,7 +280,9 @@ export default function MotorcyclesPage() {
                         id="price-30-plus"
                         name="price"
                         checked={filters.priceRange === "30-100"}
-                        onChange={() => handleFilterChange("priceRange", "30-100")}
+                        onChange={() =>
+                          handleFilterChange("priceRange", "30-100")
+                        }
                         className="mr-2"
                       />
                       <label htmlFor="price-30-plus">$30+</label>
@@ -289,7 +315,9 @@ export default function MotorcyclesPage() {
                       </div>
                     </div>
                     <div className="p-4">
-                      <h3 className="text-lg font-semibold mb-1">{motorcycle.name}</h3>
+                      <h3 className="text-lg font-semibold mb-1">
+                        {motorcycle.name}
+                      </h3>
                       <div className="flex items-center mb-2">
                         <div className="flex text-yellow-400">
                           {[...Array(5)].map((_, i) => (
@@ -297,7 +325,9 @@ export default function MotorcyclesPage() {
                               key={i}
                               xmlns="http://www.w3.org/2000/svg"
                               className={`h-4 w-4 ${
-                                i < Math.floor(motorcycle.rating) ? "fill-current" : "stroke-current fill-none"
+                                i < Math.floor(motorcycle.rating)
+                                  ? "fill-current"
+                                  : "stroke-current fill-none"
                               }`}
                               viewBox="0 0 24 24"
                             >
@@ -310,11 +340,15 @@ export default function MotorcyclesPage() {
                             </svg>
                           ))}
                         </div>
-                        <span className="text-gray-500 text-sm ml-1">({motorcycle.reviews} reviews)</span>
+                        <span className="text-gray-500 text-sm ml-1">
+                          ({motorcycle.reviews} reviews)
+                        </span>
                       </div>
                       <p className="text-2xl font-bold text-blue-600 mb-4">
                         ${motorcycle.price}
-                        <span className="text-sm text-gray-500 font-normal">/day</span>
+                        <span className="text-sm text-gray-500 font-normal">
+                          /day
+                        </span>
                       </p>
                       <Link
                         href="/booking"
@@ -329,9 +363,13 @@ export default function MotorcyclesPage() {
 
               {filteredMotorcycles.length === 0 && (
                 <div className="text-center py-12">
-                  <p className="text-gray-500 text-lg">No motorcycles found matching your filters.</p>
+                  <p className="text-gray-500 text-lg">
+                    No motorcycles found matching your filters.
+                  </p>
                   <button
-                    onClick={() => setFilters({ brand: "", category: "", priceRange: "" })}
+                    onClick={() =>
+                      setFilters({ brand: "", category: "", priceRange: "" })
+                    }
                     className="mt-4 text-blue-600 hover:text-blue-800 font-medium"
                   >
                     Clear all filters
@@ -343,6 +381,5 @@ export default function MotorcyclesPage() {
         </div>
       </section>
     </>
-  )
+  );
 }
-

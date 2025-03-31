@@ -1,11 +1,18 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Calendar, MapPin, Users, Clock, CreditCard, CheckCircle } from "lucide-react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import {
+  Calendar,
+  MapPin,
+  Users,
+  Clock,
+  CreditCard,
+  CheckCircle,
+} from "lucide-react";
 
 export default function BookingPage() {
   const [formData, setFormData] = useState({
@@ -17,49 +24,58 @@ export default function BookingPage() {
     name: "",
     email: "",
     phone: "",
-  })
+  });
 
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(1);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (step < 3) {
-      setStep(step + 1)
+      setStep(step + 1);
     } else {
       // Submit form logic would go here
-      alert("Booking submitted successfully!")
+      alert("Booking submitted successfully!");
     }
-  }
+  };
 
   const goBack = () => {
     if (step > 1) {
-      setStep(step - 1)
+      setStep(step - 1);
     }
-  }
+  };
 
   return (
     <>
       {/* Header */}
       <section className="bg-blue-600 py-16 text-white">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">Book Your Motorbike</h1>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+              Book Your Motorbike
+            </h1>
             <p className="text-center max-w-2xl mx-auto">
-              Complete the form below to reserve your motorbike and start your adventure.
+              Complete the form below to reserve your motorbike and start your
+              adventure.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 ">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
             {/* Progress Steps */}
@@ -68,7 +84,9 @@ export default function BookingPage() {
                 <div className="flex flex-col items-center">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      step >= 1 ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-600"
+                      step >= 1
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-300 text-gray-600"
                     }`}
                   >
                     1
@@ -76,12 +94,16 @@ export default function BookingPage() {
                   <span className="text-sm mt-1">Rental Details</span>
                 </div>
                 <div className="flex-1 flex items-center">
-                  <div className={`h-1 w-full ${step >= 2 ? "bg-blue-600" : "bg-gray-300"}`}></div>
+                  <div
+                    className={`h-1 w-full ${step >= 2 ? "bg-blue-600" : "bg-gray-300"}`}
+                  ></div>
                 </div>
                 <div className="flex flex-col items-center">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      step >= 2 ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-600"
+                      step >= 2
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-300 text-gray-600"
                     }`}
                   >
                     2
@@ -89,12 +111,16 @@ export default function BookingPage() {
                   <span className="text-sm mt-1">Personal Info</span>
                 </div>
                 <div className="flex-1 flex items-center">
-                  <div className={`h-1 w-full ${step >= 3 ? "bg-blue-600" : "bg-gray-300"}`}></div>
+                  <div
+                    className={`h-1 w-full ${step >= 3 ? "bg-blue-600" : "bg-gray-300"}`}
+                  ></div>
                 </div>
                 <div className="flex flex-col items-center">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      step >= 3 ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-600"
+                      step >= 3
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-300 text-gray-600"
                     }`}
                   >
                     3
@@ -114,11 +140,16 @@ export default function BookingPage() {
                   exit={{ opacity: 0 }}
                   className="space-y-6"
                 >
-                  <h2 className="text-2xl font-semibold mb-6">Rental Details</h2>
+                  <h2 className="text-2xl font-semibold mb-6">
+                    Rental Details
+                  </h2>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="pickupLocation" className="block text-gray-700 mb-2">
+                      <label
+                        htmlFor="pickupLocation"
+                        className="block text-gray-700 mb-2"
+                      >
                         Pickup Location
                       </label>
                       <div className="relative">
@@ -143,7 +174,10 @@ export default function BookingPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="dropoffLocation" className="block text-gray-700 mb-2">
+                      <label
+                        htmlFor="dropoffLocation"
+                        className="block text-gray-700 mb-2"
+                      >
                         Drop-off Location
                       </label>
                       <div className="relative">
@@ -168,7 +202,10 @@ export default function BookingPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="pickupDate" className="block text-gray-700 mb-2">
+                      <label
+                        htmlFor="pickupDate"
+                        className="block text-gray-700 mb-2"
+                      >
                         Pickup Date
                       </label>
                       <div className="relative">
@@ -189,7 +226,10 @@ export default function BookingPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="dropoffDate" className="block text-gray-700 mb-2">
+                      <label
+                        htmlFor="dropoffDate"
+                        className="block text-gray-700 mb-2"
+                      >
                         Drop-off Date
                       </label>
                       <div className="relative">
@@ -211,7 +251,10 @@ export default function BookingPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="motorcycle" className="block text-gray-700 mb-2">
+                    <label
+                      htmlFor="motorcycle"
+                      className="block text-gray-700 mb-2"
+                    >
                       Select Motorcycle
                     </label>
                     <select
@@ -226,7 +269,9 @@ export default function BookingPage() {
                       <option value="honda-adv-160">Honda ADV 160</option>
                       <option value="honda-pcx-160">Honda PCX 160</option>
                       <option value="yamaha-nmax">Yamaha NMAX</option>
-                      <option value="kawasaki-ninja-400">Kawasaki Ninja 400</option>
+                      <option value="kawasaki-ninja-400">
+                        Kawasaki Ninja 400
+                      </option>
                     </select>
                   </div>
 
@@ -249,11 +294,16 @@ export default function BookingPage() {
                   exit={{ opacity: 0 }}
                   className="space-y-6"
                 >
-                  <h2 className="text-2xl font-semibold mb-6">Personal Information</h2>
+                  <h2 className="text-2xl font-semibold mb-6">
+                    Personal Information
+                  </h2>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-gray-700 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-gray-700 mb-2"
+                      >
                         Full Name
                       </label>
                       <input
@@ -269,7 +319,10 @@ export default function BookingPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-gray-700 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-gray-700 mb-2"
+                      >
                         Email Address
                       </label>
                       <input
@@ -285,7 +338,10 @@ export default function BookingPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="phone" className="block text-gray-700 mb-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-gray-700 mb-2"
+                      >
                         Phone Number
                       </label>
                       <input
@@ -327,14 +383,21 @@ export default function BookingPage() {
                   exit={{ opacity: 0 }}
                   className="space-y-6"
                 >
-                  <h2 className="text-2xl font-semibold mb-6">Confirm Your Booking</h2>
+                  <h2 className="text-2xl font-semibold mb-6">
+                    Confirm Your Booking
+                  </h2>
 
                   <div className="bg-gray-50 p-4 rounded-md">
-                    <h3 className="font-semibold text-lg mb-4">Booking Summary</h3>
+                    <h3 className="font-semibold text-lg mb-4">
+                      Booking Summary
+                    </h3>
 
                     <div className="space-y-3">
                       <div className="flex items-start">
-                        <Clock className="text-gray-500 mr-3 mt-1 flex-shrink-0" size={18} />
+                        <Clock
+                          className="text-gray-500 mr-3 mt-1 flex-shrink-0"
+                          size={18}
+                        />
                         <div>
                           <p className="text-sm text-gray-500">Rental Period</p>
                           <p className="font-medium">
@@ -344,33 +407,54 @@ export default function BookingPage() {
                       </div>
 
                       <div className="flex items-start">
-                        <MapPin className="text-gray-500 mr-3 mt-1 flex-shrink-0" size={18} />
+                        <MapPin
+                          className="text-gray-500 mr-3 mt-1 flex-shrink-0"
+                          size={18}
+                        />
                         <div>
-                          <p className="text-sm text-gray-500">Pickup Location</p>
+                          <p className="text-sm text-gray-500">
+                            Pickup Location
+                          </p>
                           <p className="font-medium">
-                            {formData.pickupLocation === "location1" && "Downtown"}
-                            {formData.pickupLocation === "location2" && "Airport"}
-                            {formData.pickupLocation === "location3" && "Beach Area"}
+                            {formData.pickupLocation === "location1" &&
+                              "Downtown"}
+                            {formData.pickupLocation === "location2" &&
+                              "Airport"}
+                            {formData.pickupLocation === "location3" &&
+                              "Beach Area"}
                           </p>
                         </div>
                       </div>
 
                       <div className="flex items-start">
-                        <MapPin className="text-gray-500 mr-3 mt-1 flex-shrink-0" size={18} />
+                        <MapPin
+                          className="text-gray-500 mr-3 mt-1 flex-shrink-0"
+                          size={18}
+                        />
                         <div>
-                          <p className="text-sm text-gray-500">Drop-off Location</p>
+                          <p className="text-sm text-gray-500">
+                            Drop-off Location
+                          </p>
                           <p className="font-medium">
-                            {formData.dropoffLocation === "location1" && "Downtown"}
-                            {formData.dropoffLocation === "location2" && "Airport"}
-                            {formData.dropoffLocation === "location3" && "Beach Area"}
+                            {formData.dropoffLocation === "location1" &&
+                              "Downtown"}
+                            {formData.dropoffLocation === "location2" &&
+                              "Airport"}
+                            {formData.dropoffLocation === "location3" &&
+                              "Beach Area"}
                           </p>
                         </div>
                       </div>
 
                       <div className="flex items-start">
-                        <Users className="text-gray-500 mr-3 mt-1 flex-shrink-0" size={18} />
+                        <Users
+                          className="text-gray-500 mr-3 mt-1 flex-shrink-0"
+                          size={18}
+                        />
                         <div>
-                          <p className="text-sm text-gray-500">Personal Information</p>
+                          <p className="text-sm text-gray-500">
+                            Personal Information
+                          </p>
                           <p className="font-medium">{formData.name}</p>
                           <p className="text-sm">{formData.email}</p>
                           <p className="text-sm">{formData.phone}</p>
@@ -380,7 +464,9 @@ export default function BookingPage() {
                   </div>
 
                   <div className="bg-gray-50 p-4 rounded-md">
-                    <h3 className="font-semibold text-lg mb-4">Selected Motorcycle</h3>
+                    <h3 className="font-semibold text-lg mb-4">
+                      Selected Motorcycle
+                    </h3>
 
                     <div className="flex items-center">
                       <div className="relative w-24 h-24 mr-4">
@@ -393,10 +479,14 @@ export default function BookingPage() {
                       </div>
                       <div>
                         <p className="font-medium">
-                          {formData.motorcycle === "honda-adv-160" && "Honda ADV 160"}
-                          {formData.motorcycle === "honda-pcx-160" && "Honda PCX 160"}
-                          {formData.motorcycle === "yamaha-nmax" && "Yamaha NMAX"}
-                          {formData.motorcycle === "kawasaki-ninja-400" && "Kawasaki Ninja 400"}
+                          {formData.motorcycle === "honda-adv-160" &&
+                            "Honda ADV 160"}
+                          {formData.motorcycle === "honda-pcx-160" &&
+                            "Honda PCX 160"}
+                          {formData.motorcycle === "yamaha-nmax" &&
+                            "Yamaha NMAX"}
+                          {formData.motorcycle === "kawasaki-ninja-400" &&
+                            "Kawasaki Ninja 400"}
                         </p>
                         <p className="text-blue-600 font-bold mt-1">$25/day</p>
                       </div>
@@ -404,7 +494,9 @@ export default function BookingPage() {
                   </div>
 
                   <div className="bg-gray-50 p-4 rounded-md">
-                    <h3 className="font-semibold text-lg mb-4">Payment Method</h3>
+                    <h3 className="font-semibold text-lg mb-4">
+                      Payment Method
+                    </h3>
 
                     <div className="flex items-center">
                       <CreditCard className="text-gray-500 mr-3" size={20} />
@@ -435,6 +527,5 @@ export default function BookingPage() {
         </div>
       </section>
     </>
-  )
+  );
 }
-

@@ -12,7 +12,7 @@ export default function Home() {
       <section className="relative h-[80vh] flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/bg.jpg"
+            src="/bg-2.jpeg"
             alt="Motorbike on a scenic road"
             fill
             priority
@@ -146,19 +146,22 @@ export default function Home() {
             {[
               {
                 name: "Honda ADV 160",
-                image: "/placeholder.svg?height=300&width=400",
+                image:
+                  "https://www.thaihonda.co.th/honda/uploads/cache/685/photos/shares/ADV160_2024/Car_Color_-_Car_Color_image_Green.png",
                 price: 25,
                 category: "Adventure",
               },
               {
                 name: "Yamaha NMAX",
-                image: "/placeholder.svg?height=300&width=400",
+                image:
+                  "https://storagetym.blob.core.windows.net/www2021/images/product-2021/commuter/model-year-2025/all-new-nmax-2025/lineup-360-magma-black/2.png?sfvrsn=f4ef4f1a_2",
                 price: 22,
                 category: "Scooter",
               },
               {
-                name: "Kawasaki Ninja 400",
-                image: "/placeholder.svg?height=300&width=400",
+                name: "New PCX160",
+                image:
+                  "https://www.thaihonda.co.th/honda/uploads/cache/685/photos/shares/24_PCX160/Color/Color_Chart_W685xH426_PX_Blue.png",
                 price: 35,
                 category: "Sport",
               },
@@ -171,12 +174,12 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white rounded-lg shadow-md overflow-hidden"
               >
-                <div className="relative h-48">
+                <div className="relative h-64">
                   <Image
                     src={bike.image || "/placeholder.svg"}
                     alt={bike.name}
                     fill
-                    className="object-cover"
+                    className="object-cover "
                   />
                 </div>
                 <div className="p-4">
